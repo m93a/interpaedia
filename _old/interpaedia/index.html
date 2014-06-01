@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset=utf-8 />
+  <title>The Interactive Encyclopaedia</title>
+  
+  <meta name=welcome value=to_the_code />
+  <meta name=author value=m93a />
+  
+  <style>
+   @font-face{
+    font-family: 'Didact';
+    src: url('./Didact.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  </style>
+  <style>
+   *{
+    font-family: Didact;
+   }
+   
+   html,
+   body,
+   section{
+    margin:  0;
+    padding: 0;
+    width:  100%;
+    height: 100%;
+   }
+   
+   section{
+    position: absolute;
+    left: 0;
+    top:  0;
+    display: none;
+   }
+   section:target + section{
+    display: block;
+    vertical-align: top;
+   }
+   section:target{
+    display:block;
+    z-index: 1;
+   }
+   
+   .norender{
+    display: none !important;
+   }
+  </style>
+ </head>
+ <body>
+  <script src=./enviro.js></script>
+  <script src=./slides.js></script>
+  <section id=0>
+   <hgroup>
+    <h1>Interpaedia</h1>
+    <h2>Interaktivní Encyklopedie Vesmíru</h2>
+   </hgroup>
+   <span class=work>Work in progress!</span>
+   <a class=inlink href=#bio_smetanka>Smetánka lékařská</a>
+  </section>
+  <section id=bio_smetanka>
+   <h1>Smetánka lékařská</h1>
+  </section>
+  
+  <div id=audio class=norender>
+   <!-- TODO -->
+  </div>
+ </body>
+</html>

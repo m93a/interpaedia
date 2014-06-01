@@ -1,0 +1,257 @@
+@import url("./fonts/rons.css");
+@import url("./fonts/wonder.css");
+@import url("./fonts/typewriter.css");
+@import url("./fonts/crusoe.css");
+
+*{
+ backface-visibility: hidden;
+ -webkit-backface-visibility: hidden;
+}
+body{
+ overflow: hidden;
+ font-family: Typewriter;
+ cursor: default;
+ perspective: 800px;
+ -webkit-perspective: 800px;
+}
+section{
+ background: white;
+}
+a{
+ color: black;
+ text-decoration: none;
+ cursor: default;
+}
+
+section>hgroup,
+li{
+ margin: auto;
+ width: fit-content;
+ width: -moz-fit-content;
+ width: -webkit-fit-content;
+}
+
+section>hgroup>h1{
+ font-family: Rons;
+ font-weight: normal;
+ font-size: 3em;
+ margin-bottom: 0;
+}
+section>hgroup>.beta{
+ font-family: Wonder;
+ position: relative;
+ bottom: 0.8em;
+ margin: 0;
+ float: right;
+}
+section>hgroup>h3{
+ position: relative;
+ bottom: 0.8em;
+ margin: 0;
+ margin-left: 20px;
+}
+
+ul{
+ margin: 0;
+ padding: 0;
+ width: 100%;
+ font-weight: bold;
+ text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+ list-style-type: none;
+}
+ul ul{
+ font-size: 1em;
+}
+li{
+ margin-bottom: 20px;
+}
+li:before{
+ content: ">";
+}
+
+section.pageTurn{
+ display: block;
+ transform-style: preserve-3d;
+ transform: rotateY(-90deg);
+ transform-origin: left top;
+ transition: -webkit-transform 3s ease-in;
+ transition: transform 3s ease-in;
+ z-index: 3;
+ -webkit-transform-style: preserve-3d;
+ -webkit-transform: rotateY(-90deg);
+ -webkit-transform-origin: left top;
+}
+section.pageTurn:target{
+ transform: rotateY(0);
+ transition: -webkit-transform 1s ease-out;
+ transition: transform 1s ease-out;
+ z-index: 2;
+ -webkit-transform: rotateY(0);
+}
+section.pageTurn:target ~ section{
+ display: none;
+ transition: none;
+}
+section.pageTurn:target + section{
+ display: block;
+ transform: rotateY(0);
+ transition: none;
+ z-index: 1;
+}
+
+section[id="0"]{
+ background: url('./img/bg0.jpg') #909794;
+ background-size: cover;
+}
+section[id="0"] img{
+ display: block;
+ width: 200px;
+ margin: auto;
+ margin-top: 200px;
+}
+
+section[id="1"]{
+ background: black;
+}
+section[id="1"]>hgroup{
+ color: white;
+ z-index: 2;
+ height: 0;
+ overflow: visible;
+ margin-bottom: 0;
+}
+section[id="1"] h1{
+ margin-top: 50px;
+}
+section[id="1"] h3{
+ margin-bottom: 0;
+}
+section[id="1"] .obrazek{
+ width: 406px;
+ margin: auto;
+ margin-top: 80px;
+}
+section[id="1"] .obrazek img{
+ display: block;
+ position: absolute;
+}
+section[id="1"] .obrazek img:not(.hlavni){
+ opacity: 0;
+ transition: opacity 1s;
+}
+section[id="1"] .obrazek img:not(.hlavni):hover,
+section[id="1"] .obrazek img:not(.hlavni).hover{
+ opacity: 1;
+}
+.obrazek{
+ position: relative;
+}
+[id="1_hlavni"]{
+ left: 0;
+ top: 0;
+}
+[id="1_list2"]{
+ left: 92px;
+ top: 93px;
+}
+[id="1_stonek1"]{
+ left: 144px;
+ top: 148px;
+}
+[id="1_stonek2"]{
+ left: 204px;
+ top: 282px;
+}
+.help, .close{
+ display: block;
+ position: absolute;
+ right: 0; top: 0;
+ margin: 5px;
+ color: white;
+ font-family: Rons;
+ font-size: 4em;
+}
+.detail{
+ box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ position: absolute;
+ top: 0;
+ left: 100%;
+ width: 100%;
+ height: 100%;
+ padding: 20px;
+ z-index: 2;
+ color: white;
+ background: black;
+ font-size: 0.8em;
+ transition: left 2s ease-in-out;
+}
+.detail *{
+ transition: color 1s;
+}
+.detail.show{
+ left: 0;
+}
+.detail h1{
+ font-family: Rons;
+ font-size: 2em;
+ text-align: center;
+ margin-bottom: 10px;
+}
+.detail h2{
+ font-family: Rons, Typewriter;
+ font-size: 1.7em;
+ margin-top: 20px;
+ margin-bottom: 0;
+}
+.detail h3{
+ margin-top: 0;
+}
+.detail .leva{
+ margin-top: -100px;
+ float: left;
+}
+.detail .prava{
+ margin-top: -100px;
+ float: right;
+}
+section[id="1"] .detail .obrazek img:not(.hlavni):not(.hover):hover{
+ opacity: 0;
+}
+[id="1_detail_stonek_hlavni"],
+[id="1_detail_stonek_pokozka"],
+[id="1_detail_stonek_kura"]{
+ width: 400px;
+ left: 0;
+ top: 0;
+}
+[id="1_detail_stonek_xylem"]{
+ width: 207.42px;
+ left: 103px;
+ top: 86px;
+}
+[id="1_detail_stonek_dren"]{
+ width: 181.23px;
+ left: 115px;
+ top: 103px;
+}
+
+[id="1_xylem"]:hover,
+[id="1_xylem"].hover{
+ color: #e34228;
+}
+
+[id="1_dren"]:hover,
+[id="1_dren"].hover{
+ color: #a1d837;
+}
+
+[id="1_pokozka"]:hover,
+[id="1_pokozka"].hover{
+ color: #8be8dc;
+}
+
+[id="1_kura"]:hover,
+[id="1_kura"].hover{
+ color: #6dbcd8;
+}

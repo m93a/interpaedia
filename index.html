@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset=utf-8 />
+  <title>Interpaedia</title>
+  <script src=depend.js></script>
+  <script src=enviro.js></script>
+  <script src=slides.js></script>
+  <link rel=stylesheet href=style.css />
+ </head>
+ <body>
+  <section class=pageTurn>
+   <hgroup>
+    <h1>Interpaedia</h1>
+    <h2 class=beta>Beta</h2>
+   </hgroup>
+   <img src=./img/arrow_keys.png />
+  </section>
+  <section class=pageTurn>
+   <hgroup>
+    <h1>Rostliny</h1>
+    <h3>Archaeplastida</h3>
+   </hgroup>
+   <span id=1_help class=help>?</span>
+   <div class=obrazek>
+    <img id=1_hlavni  src=./img/rajce_male.png class=hlavni />
+    <img id=1_stonek1 src=./img/rajce_male_stonek1.png />
+    <img id=1_stonek2 src=./img/rajce_male_stonek2.png />
+    <img id=1_list2   src=./img/rajce_male_list2.png />
+   </div>
+   <div id=1_detail_stonek class=detail>
+    <h1>Stonek</h1>
+    <div class=obrazek>
+     <img id=1_detail_stonek_hlavni class=hlavni src=./img/stonek_inverted.png />
+     <img id=1_detail_stonek_pokozka src=./img/stonek_inverted_pokozka.png />
+     <img id=1_detail_stonek_kura src=./img/stonek_inverted_kura.png />
+     <img id=1_detail_stonek_xylem src=./img/stonek_inverted_xylem.png />
+     <img id=1_detail_stonek_dren src=./img/stonek_inverted_dren.png />
+    </div>
+    <div class=leva>
+     <h2 id=1_pokozka>Pokožka</h2>
+     Lorem ipsum...
+     
+     <h2 id=1_kura>Primární kůra</h2>
+     ...dolor sit amet.
+     
+     <hgroup id=1_floem>
+      <h2>Lýko</h2>
+      <h3>Floem</h3>
+     </hgroup>
+     Adipiscing nequem.
+    </div>
+    <div class=prava>
+     <hgroup id=1_xylem>
+      <h2>Dřevo</h2>
+      <h3>Xylem</h3>
+     </hgroup>
+     Ty jsi ale dřevo.
+     
+     <h2 id=1_dren>Dřeň</h2>
+    </div>
+    <span id=1_detail_stonek_close class=close>X</span>
+   </div>
+   <div id=1_detail_list class=detail>
+    <h1>List</h1>
+    <img style=width:400px;display:block; src=./img/list_inverted.png />
+    <span id=1_detail_list_close class=close>X</span>
+   </div>
+   <script>
+    Script("1_odkazy",["enviro"],function(){
+     $.id('1_stonek1').on('click',function(){
+      $.id('1_detail_stonek').addClass('show');
+     });
+     $.id('1_stonek2').on('click',function(){
+      $.id('1_detail_stonek').addClass('show');
+     });
+     $.id('1_detail_stonek_close').on('click',function(){
+      $.id('1_detail_stonek').rmClass('show');
+     });
+     
+     $.id('1_xylem').on('mouseover',function(){
+      $.id('1_detail_stonek_xylem').addClass('hover');
+     });
+     $.id('1_xylem').on('mouseout',function(){
+      $.id('1_detail_stonek_xylem').rmClass('hover');
+     });
+     
+     $.id('1_dren').on('mouseover',function(){
+      $.id('1_detail_stonek_dren').addClass('hover');
+     });
+     $.id('1_dren').on('mouseout',function(){
+      $.id('1_detail_stonek_dren').rmClass('hover');
+     });
+     
+     $.id('1_pokozka').on('mouseover',function(){
+      $.id('1_detail_stonek_pokozka').addClass('hover');
+     });
+     $.id('1_pokozka').on('mouseout',function(){
+      $.id('1_detail_stonek_pokozka').rmClass('hover');
+     });
+     
+     $.id('1_kura').on('mouseover',function(){
+      $.id('1_detail_stonek_kura').addClass('hover');
+     });
+     $.id('1_kura').on('mouseout',function(){
+      $.id('1_detail_stonek_kura').rmClass('hover');
+     });
+     
+     $.id('1_list2').on('click',function(){
+      $.id('1_detail_list').addClass('show');
+     });
+     $.id('1_detail_list_close').on('click',function(){
+      $.id('1_detail_list').rmClass('show');
+     });
+     
+     $.id('1_help').on('click',function(){
+      $.id('1_list2').addClass('hover');
+      wait(1.5,function(){
+       $.id('1_list2').rmClass('hover');
+       $.id('1_stonek2').addClass('hover');
+      });
+      wait(2.5,function(){
+       $.id('1_stonek1').addClass('hover');
+      });
+      wait(3,function(){
+       $.id('1_stonek2').rmClass('hover');
+      });
+      wait(5,function(){
+       $.id('1_stonek1').rmClass('hover');
+      });
+     });
+    });
+   </script>
+  </section>
+  <!--
+   Dělení organismů:
+    * Prokaryota
+    * Eukaryota
+     * Živočichové
+     * Houby
+     * Protisté
+     * Rostliny <-- současný cíl
+      * Nižší rostliny
+      * Přechodné
+       * Mechorosty
+      * Vyšší rostliny
+  -->
+  <section class=pageTurn>
+   <hgroup>
+    <h1>Mechorosty</h1>
+    <h3>Bryophytae</h3>
+   </hgroup>
+   <!-- metageneze - generace G a S -->
+   <!-- pionýrský organismus -->
+  </section>
+  <section>
+   <endora>
+  </section>
+  
+  <script>
+   Script(
+    'launch',
+    ['slides'],
+    function(){slides.construct();}
+   );
+  </script>
+ </body>
+</html>

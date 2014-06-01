@@ -1,0 +1,7 @@
+@font-face{
+ font-family: 8BIT_WONDER;
+ font-weight: normal;
+ font-style: normal;
+ src: url(./Crusoe/Regular.otf) format(opentype),
+      url(./Crusoe/Regular.ttf) format(truetype);
+}

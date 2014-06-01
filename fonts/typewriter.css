@@ -1,0 +1,9 @@
+/* Ron's Font */
+/* Nick Matavka */
+@font-face{
+ font-family: Typewriter;
+ src: url('./Typewriter/Regular.otf') format('opentype'),
+      url('./Typewriter/Regular.ttf') format('truetype');
+ font-weight: normal;
+ font-style: normal;
+}

@@ -1,0 +1,8 @@
+/* Ron's Font */
+/* Nick Matavka */
+@font-face{
+ font-family: Rons;
+ src: url('./Rons/RegularExtended.ttf') format('truetype');
+ font-weight: normal;
+ font-style: normal;
+}

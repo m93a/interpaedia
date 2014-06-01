@@ -1,0 +1,8 @@
+/* 8BIT WONDER */
+/* Pedro Santos */
+@font-face{
+ font-family: Wonder;
+ src: url('./Wonder/Regular.ttf');
+ font-weight: normal;
+ font-style: normal;
+}
