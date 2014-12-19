@@ -207,12 +207,13 @@ section[id="1"] .obrazek img:not(.hlavni).hover{
 .detail h3{
  margin-top: 0;
 }
-.detail .leva{
+.detail .leva,
+.detail .prava{
  margin-top: -100px;
+ width: 400px;
  float: left;
 }
 .detail .prava{
- margin-top: -100px;
  float: right;
 }
 section[id="1"] .detail .obrazek img:not(.hlavni):not(.hover):hover{
@@ -235,6 +236,16 @@ section[id="1"] .detail .obrazek img:not(.hlavni):not(.hover):hover{
  left: 115px;
  top: 103px;
 }
+[id="1_detail_stonek_floem"]{
+ width: 283.89px;
+ left: 59px;
+ top: 50px;
+}
+[id="1_detail_list_hlavni"]{
+ width: 400px;
+ left: 0;
+ top: 0;
+}
 
 [id="1_xylem"]:hover,
 [id="1_xylem"].hover{
@@ -254,4 +265,51 @@ section[id="1"] .detail .obrazek img:not(.hlavni):not(.hover):hover{
 [id="1_kura"]:hover,
 [id="1_kura"].hover{
  color: #6dbcd8;
+}
+
+[id="1_floem"]:hover,
+[id="1_floem"].hover{
+ color: #9374d5;
+}
+
+.blackbg{
+ background: black;
+ color: white;
+}
+
+.blackbg img{
+ display: block;
+ margin: auto;
+ max-width: 1000px;
+ max-height: 500px;
+}
+
+.blackbg h1{
+ display: block;
+ margin: auto;
+ width: fit-content;
+ width: -moz-fit-content;
+ width: -webkit-fit-content;
+}
+
+.blackbg hgroup h2{
+ font-family: Rons;
+}
+
+.sloupce .leva,
+.sloupce .prava{
+ display: block;
+ width: 370px;
+ float: left;
+}
+
+.sloupce .prava{
+ float: right;
+}
+
+[id="5_oplozeni"]{
+ color: #007c9e;
+}
+[id="5_redukce"]{
+ color: #d31b0f;
 }

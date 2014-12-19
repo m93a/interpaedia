@@ -7,6 +7,7 @@
   <script src=enviro.js></script>
   <script src=slides.js></script>
   <link rel=stylesheet href=style.css />
+  <meta property="og:image" content="./img/bg0.jpg" />
  </head>
  <body>
   <section class=pageTurn>
@@ -28,42 +29,80 @@
     <img id=1_stonek2 src=./img/rajce_male_stonek2.png />
     <img id=1_list2   src=./img/rajce_male_list2.png />
    </div>
-   <div id=1_detail_stonek class=detail>
-    <h1>Stonek</h1>
+   <div id=1_detail_stonek class="detail sloupce">
+    <h1 id=1_stonek_nadpis>Stonek</h1>
     <div class=obrazek>
      <img id=1_detail_stonek_hlavni class=hlavni src=./img/stonek_inverted.png />
      <img id=1_detail_stonek_pokozka src=./img/stonek_inverted_pokozka.png />
      <img id=1_detail_stonek_kura src=./img/stonek_inverted_kura.png />
+     <img id=1_detail_stonek_floem src=./img/stonek_inverted_floem.png />
      <img id=1_detail_stonek_xylem src=./img/stonek_inverted_xylem.png />
      <img id=1_detail_stonek_dren src=./img/stonek_inverted_dren.png />
     </div>
-    <div class=leva>
-     <h2 id=1_pokozka>Pokožka</h2>
-     Lorem ipsum...
-     
-     <h2 id=1_kura>Primární kůra</h2>
-     ...dolor sit amet.
-     
-     <hgroup id=1_floem>
-      <h2>Lýko</h2>
-      <h3>Floem</h3>
-     </hgroup>
-     Adipiscing nequem.
-    </div>
     <div class=prava>
-     <hgroup id=1_xylem>
-      <h2>Dřevo</h2>
-      <h3>Xylem</h3>
-     </hgroup>
-     Ty jsi ale dřevo.
+     <span id=1_pokozka>
+      <h2>Pokožka</h2>
+      Po celém povrchu stonku. Zadržuje vodu uvnitř.
+     </span>
      
-     <h2 id=1_dren>Dřeň</h2>
+     <span id=1_kura>
+      <h2>Primární kůra</h2>
+      Obsahuje chlorofyl, může plnit i zásobní funkci.
+     </span>
+     
+      <span id=1_dren>
+      <h2>Dřeň</h2>
+      Slouží k rozvodu a ukládání živin.
+     </span>
+     </span>
+    </div>
+    <div class=leva>
+     <span id=1_xylem>
+      <hgroup>
+       <h2>Dřevo</h2>
+       <h3>Xylem</h3>
+      </hgroup>
+      Přepravuje vodu a minerály k vrchním částem rostliny.
+     </span>
+     
+     <span id=1_floem>
+      <hgroup>
+       <h2>Lýko</h2>
+       <h3>Floem</h3>
+      </hgroup>
+      Přepravuje živiny vzniklé při fotosyntéze.
+     </span>
     </div>
     <span id=1_detail_stonek_close class=close>X</span>
    </div>
    <div id=1_detail_list class=detail>
     <h1>List</h1>
-    <img style=width:400px;display:block; src=./img/list_inverted.png />
+    <div class=obrazek>
+     <img id=1_detail_list_hlavni src=./img/list_inverted.png class=hlavni />
+    </div>
+    <div class=leva>
+     <span id=1_kutikula>
+      <h2>Kutikula</h2>
+      Zabraňuje nadbytečnému odpařování a udržuje vlhkost uvnitř rostliny.
+     </span>
+     <span id=1_stomata>
+      <hgroup>
+       <h2>Průduch</h2>
+       <h3>Stomata</h3>
+      </hgroup>
+      Reguluje odpařování - může se otevřít nebo uzavřít
+     </span>
+    </div>
+    <div class=prava>
+     <span id=1_parenchym_h>
+      <h2>Houbovitý p.</h2>
+      Parenchym sloužící zadržování a přepravě vody.
+     </span>
+     <span id=1_parenchym_p>
+      <h2>Palisádový p.</h2>
+      Fotosyntetizující část listu.
+     </span>
+    </div>
     <span id=1_detail_list_close class=close>X</span>
    </div>
    <script>
@@ -76,6 +115,31 @@
      });
      $.id('1_detail_stonek_close').on('click',function(){
       $.id('1_detail_stonek').rmClass('show');
+     });
+     
+     $.id('1_stonek_nadpis').on('mouseover',function(){
+      $.id('1_xylem').addClass('hover');
+      $.id('1_detail_stonek_xylem').addClass('hover');
+      $.id('1_floem').addClass('hover');
+      $.id('1_detail_stonek_floem').addClass('hover');
+      $.id('1_dren').addClass('hover');
+      $.id('1_detail_stonek_dren').addClass('hover');
+      $.id('1_pokozka').addClass('hover');
+      $.id('1_detail_stonek_pokozka').addClass('hover');
+      $.id('1_kura').addClass('hover');
+      $.id('1_detail_stonek_kura').addClass('hover');
+     });
+     $.id('1_stonek_nadpis').on('mouseout',function(){
+      $.id('1_xylem').rmClass('hover');
+      $.id('1_detail_stonek_xylem').rmClass('hover');
+      $.id('1_floem').rmClass('hover');
+      $.id('1_detail_stonek_floem').rmClass('hover');
+      $.id('1_dren').rmClass('hover');
+      $.id('1_detail_stonek_dren').rmClass('hover');
+      $.id('1_pokozka').rmClass('hover');
+      $.id('1_detail_stonek_pokozka').rmClass('hover');
+      $.id('1_kura').rmClass('hover');
+      $.id('1_detail_stonek_kura').rmClass('hover');
      });
      
      $.id('1_xylem').on('mouseover',function(){
@@ -104,6 +168,13 @@
      });
      $.id('1_kura').on('mouseout',function(){
       $.id('1_detail_stonek_kura').rmClass('hover');
+     });
+     
+     $.id('1_floem').on('mouseover',function(){
+      $.id('1_detail_stonek_floem').addClass('hover');
+     });
+     $.id('1_floem').on('mouseout',function(){
+      $.id('1_detail_stonek_floem').rmClass('hover');
      });
      
      $.id('1_list2').on('click',function(){
@@ -145,14 +216,52 @@
        * Mechorosty
       * Vyšší rostliny
   -->
-  <section class=pageTurn>
-   <hgroup>
-    <h1>Mechorosty</h1>
-    <h3>Bryophytae</h3>
-   </hgroup>
-   <!-- metageneze - generace G a S -->
-   <!-- pionýrský organismus -->
+  <section class="pageTurn blackbg">
+   <hgroup><h1>Rostlinná buňka</h1></hgroup>
+   <img src=./img/velke_bunka.jpg />
   </section>
+  <section class="pageTurn blackbg">
+   <hgroup><h1>Typy stélky</h1></hgroup>
+   <img src=./img/stelka.jpg />
+  </section>
+  <section class="pageTurn blackbg">
+   <hgroup><h1>Části sporofytu</h1></hgroup>
+   <img src=./img/sporofyt.jpg />
+  </section>
+  <section class="pageTurn blackbg">
+   <hgroup><h1>Přeslička rolní</h1></hgroup>
+   <div class=sloupce>
+    <div class=leva>
+     <span id=5_redukce>
+      <hgroup>
+       <h2>Redukční dělení</h2>
+      </hgroup>
+     </span>
+    </div>
+    <div class=prava>
+     <span id=5_oplozeni>
+      <hgroup>
+       <h2>Oplození</h2>
+      </hgroup>
+     </span>
+    </div>
+    <div class=obrazek>
+     <img class=hlavni src=./img/preslicka_rolni.jpg />
+    </div>
+   </div>
+  </section>
+  <section class="pageTurn blackbg">
+   <hgroup><h1>Plavuň vidlačka</h1></hgroup>
+   <img src=./img/plavun_vidlacka.jpg />
+  </section>
+<!--  <section class=pageTurn>-->
+<!--   <hgroup>-->
+<!--    <h1>Mechorosty</h1>-->
+<!--    <h3>Bryophytae</h3>-->
+<!--   </hgroup>-->
+<!--   metageneze - generace G a S -->
+<!--   pionýrský organismus -->
+<!--  </section>-->
   <section>
    <endora>
   </section>
