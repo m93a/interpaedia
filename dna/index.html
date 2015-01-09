@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>dna</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <style>
+   html, body{
+    width:  100%; max-width:  100%;
+    height: 100%; max-height: 100%;
+    margin: 0;
+    padding: 0;
+   }
+   canvas{
+    max-width: 100%;
+    max-height: 100%;
+   }
+  </style>
+ </head>
+ <body>
+
+  <script src="three.min.js"></script>
+
+  <script src="renderers/Projector.js"></script>
+  <script src="renderers/CanvasRenderer.js"></script>
+
+  <script>
+   
+   var dnaseq = [
+    // 2bit int, HB meaning AT/GC, LB meaning AT/TA
+    0, //AT
+    1, //TA
+    2, //GC
+    3  //CG
+   ];
+   
+   var mesharr = [];
+   
+   
+   var camera, scene, projector, renderer;
+   var mesh, animation;
+   
+   init();
+   animate();
+   
+   function init() {
+    
+    camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera.position.y = 300;
+    camera.target = new THREE.Vector3( 0, 150, 0 );
+
+    scene = new THREE.Scene();
+
+    //
+
+    var light = new THREE.DirectionalLight( 0xefefff, 2 );
+    light.position.set( 1, 1, 1 ).normalize();
+    scene.add( light );
+
+    var light = new THREE.DirectionalLight( 0xffefef, 2 );
+    light.position.set( -1, -1, -1 ).normalize();
+    scene.add( light );
+
+    var loadAT = new THREE.JSONLoader( true );
+    var loadGC = new THREE.JSONLoader( true );
+    loadAT.load( "models/adenin+thymin.js",  function ( geoAT, matAT ) {
+     loadGC.load("models/guanin+cytosin.js", function ( geoGC, matGC ) {
+      var geometry, material;
+      
+      for( i in dnaseq ) {
+        
+        if( dnaseq[i]&2 ){
+          geometry = geoGC;
+          material = matGC;
+        }else{
+          geometry = geoAT;
+          material = matAT;
+        }
+        
+        mesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial( material ) );
+        mesh.scale.set( 15, 15, 15 );
+        mesh.position.y = i * 30;
+        
+        if( dnaseq[i]&1 ^ dnaseq[i]&2 ) {
+          mesh.rotation.x = Math.PI;
+        }
+        
+        scene.add( mesh );
+        mesharr.push(mesh);
+        
+      }
+      
+     });
+    });
+
+    //
+
+    renderer = new THREE.WebGLRenderer({ antialias:true });
+    renderer.setClearColor( 0xf0f0f0 );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild(renderer.domElement);
+
+    //
+
+    window.addEventListener( 'resize', onWindowResize, false );
+
+   }
+
+   function onWindowResize() {
+    
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    
+   }
+
+   //
+   var movX = 0,
+       movY = 0;
+   
+   
+   (function(){
+    
+    var clicked = false;
+    var lastX, lastY;
+    var stepX, stepY;
+    
+    var onClick = function(e){
+      clicked = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    };
+    
+    var onUnclick = function(){
+      clicked = false;
+    };
+    
+    var onMouseMove = function(e){
+      if(!clicked){ return; }
+      
+      var deltaX = lastX - e.clientX;
+      var deltaY = lastY - e.clientY;
+      
+      lastX = e.clientX;
+      lastY = e.clientY;
+      
+      if(mesh){
+       mesh.rotation.y -= deltaX/100;
+      }
+    };
+    
+    document.addEventListener( 'mousedown', onClick,     false );
+    document.addEventListener( 'mouseup',   onUnclick,   false );
+    document.addEventListener( 'mousemove', onMouseMove, false );
+    
+   })();
+   
+   //
+
+   function animate() {
+
+    requestAnimationFrame( animate );
+
+    render();
+
+   }
+
+   var radius = 600;
+   var theta = 0;
+
+   var prevTime = Date.now();
+
+   function render() {
+    
+    camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
+    camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
+    
+    camera.lookAt( camera.target );
+    
+    if ( animation ) {
+     
+     var time = Date.now();
+     
+     animation.update( time - prevTime );
+     
+     prevTime = time;
+     
+    }
+
+    renderer.render( scene, camera );
+
+   }
+
+  </script>
+
+ </body>
+</html>
