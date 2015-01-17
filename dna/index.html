@@ -81,8 +81,26 @@
         mesh.scale.set( 15, 15, 15 );
         mesh.position.y = i * 30;
         
-        if( dnaseq[i]&1 ^ dnaseq[i]&2 ) {
-          mesh.rotation.x = Math.PI;
+        switch( dnaseq[i] ) {
+          case 0:
+            mesh.position.z = -45;
+            break;
+          
+          case 1:
+            mesh.position.z =  45;
+            break;
+          
+          case 2:
+            mesh.position.z = -15;
+            break;
+          
+          case 3:
+            mesh.position.z =  15;
+            break;
+        }
+        
+        if( (dnaseq[i]&2) ? (dnaseq[i]&1) : !(dnaseq[i]&1) ) {
+          mesh.rotation.x += Math.PI;
         }
         
         scene.add( mesh );
@@ -119,6 +137,8 @@
    var movX = 0,
        movY = 0;
    
+   var theta = 0;
+   
    
    (function(){
     
@@ -145,9 +165,7 @@
       lastX = e.clientX;
       lastY = e.clientY;
       
-      if(mesh){
-       mesh.rotation.y -= deltaX/100;
-      }
+      theta -= deltaX/100;
     };
     
     document.addEventListener( 'mousedown', onClick,     false );
@@ -167,14 +185,13 @@
    }
 
    var radius = 600;
-   var theta = 0;
 
    var prevTime = Date.now();
 
    function render() {
     
-    camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
-    camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
+    camera.position.x = radius * Math.sin( theta );
+    camera.position.z = radius * Math.cos( theta );
     
     camera.lookAt( camera.target );
     
