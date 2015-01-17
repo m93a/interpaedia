@@ -28,10 +28,27 @@
    
    var dnaseq = [
     // 2bit int, HB meaning AT/GC, LB meaning AT/TA
-    0, //AT
-    1, //TA
-    2, //GC
-    3  //CG
+    1,
+    2,
+    2,
+    3,
+    3,
+    3,
+    0,
+    0,
+    3,
+    3,
+    1,
+    0,
+    1,
+    1,
+    3,
+    0,
+    2,
+    1,
+    0,
+    2,
+    1
    ];
    
    var mesharr = [];
@@ -81,27 +98,35 @@
         mesh.scale.set( 15, 15, 15 );
         mesh.position.y = i * 30;
         
-        switch( dnaseq[i] ) {
-          case 0:
-            mesh.position.z = -45;
+        switch( dnaseq[i] ){
+          case 0: //AT
+            mesh.position.x -= 12;
             break;
           
-          case 1:
-            mesh.position.z =  45;
+          case 1: //TA
+            mesh.position.x += 12;
             break;
           
-          case 2:
-            mesh.position.z = -15;
+          case 2: //GC
+            mesh.position.x += 7 -1;
             break;
           
-          case 3:
-            mesh.position.z =  15;
+          case 3: //CG
+            mesh.position.x -= 7 +1;
             break;
         }
         
         if( (dnaseq[i]&2) ? (dnaseq[i]&1) : !(dnaseq[i]&1) ) {
           mesh.rotation.x += Math.PI;
+          mesh.rotation.y -= i*0.586;
+        }else{
+          mesh.rotation.y += i*0.586;
         }
+        
+        if( dnaseq[i]&1 ){
+          mesh.rotation.y += Math.PI;
+        }
+        
         
         scene.add( mesh );
         mesharr.push(mesh);
